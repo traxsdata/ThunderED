@@ -12,6 +12,7 @@
     <DefineConstants>TRACE;DEBUG;NETCOREAPP2_0;THUNDER</DefineConstants>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
+    <OutputPath>C:\temp\dev thunder</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

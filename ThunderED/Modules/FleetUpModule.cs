@@ -11,7 +11,7 @@ using ThunderED.Json.FleetUp;
 
 namespace ThunderED.Modules
 {
-    public class FleetUpModule: AppModuleBase
+    public class FleetUpModule : AppModuleBase
     {
         public override LogCat Category => LogCat.FleetUp;
 
@@ -19,7 +19,7 @@ namespace ThunderED.Modules
 
         public override async Task Run(object prm)
         {
-            if(IsRunning) return;
+            if (IsRunning) return;
             IsRunning = true;
             try
             {
@@ -40,7 +40,7 @@ namespace ThunderED.Modules
 
             var format = SettingsManager.Settings.Config.ShortTimeFormat ?? "dd.MM.yyyy HH:mm";
 
-            var url = $"http://fleet-up.com/Operation#{operation.OperationId}";
+            var url = $"https://www.taifl.org/operations#{operation.OperationId}";
             var locationText = $"[{ location}](http://evemaps.dotlan.net/system/{location})";
             var builder = new EmbedBuilder()
                 .WithUrl(url)
@@ -122,7 +122,7 @@ namespace ThunderED.Modules
 
                         if (operation.OperationId > lastopid && announcePost)
                         {
-                            await SendMessage(operation, channel, $"{Settings.FleetupModule.DefaultMention} FleetUp Op <http://fleet-up.com/Operation#{operation.OperationId}>", true);
+                            await SendMessage(operation, channel, $"{Settings.FleetupModule.DefaultMention} FleetUp Op <https://www.taifl.org/operations#{operation.OperationId}>", true);
                             await SQLHelper.SetCacheDataFleetUpLastPosted(operation.OperationId);
                         }
 
@@ -130,7 +130,7 @@ namespace ThunderED.Modules
                         //no need to notify, it is already started
                         if (lastAnnounce == 0 && timeDiff.TotalMinutes < 1)
                             continue;
-                        var array = SettingsManager.Settings.FleetupModule.Announce.Where(a=> a < lastAnnounce || lastAnnounce == 0).ToArray();
+                        var array = SettingsManager.Settings.FleetupModule.Announce.Where(a => a < lastAnnounce || lastAnnounce == 0).ToArray();
 
                         foreach (var i in array)
                         {
@@ -139,7 +139,7 @@ namespace ThunderED.Modules
 
                             if (timeDiff >= epic1 && timeDiff <= epic2)
                             {
-                                await SendMessage(operation, channel, $"{Settings.FleetupModule.DefaultMention} {LM.Get("fuFormIn", i, $"http://fleet-up.com/Operation#{operation.OperationId}")}",
+                                await SendMessage(operation, channel, $"{Settings.FleetupModule.DefaultMention} {LM.Get("fuFormIn", i, $"https://www.taifl.org/operations#{operation.OperationId}")}",
                                     false);
                                 await SQLHelper.AddFleetupOp(operation.Id, i);
                             }
@@ -148,7 +148,7 @@ namespace ThunderED.Modules
                         //NOW
                         if (timeDiff.TotalMinutes < 1)
                         {
-                            await SendMessage(operation, channel, $"{Settings.FleetupModule.FinalTimeMention} {LM.Get("fuFormNow", $"http://fleet-up.com/Operation#{operation.OperationId}")}",
+                            await SendMessage(operation, channel, $"{Settings.FleetupModule.FinalTimeMention} {LM.Get("fuFormNow", $"https://www.taifl.org/operations#{operation.OperationId}")}",
                                 false);
                             await SQLHelper.DeleteFleetupOp(operation.Id);
                         }
@@ -161,7 +161,7 @@ namespace ThunderED.Modules
             }
         }
 
-       // private Dictionary<string, List<FleetUpCache> _cache = new Dictionary<string, FleetUpCache>();
+        // private Dictionary<string, List<FleetUpCache> _cache = new Dictionary<string, FleetUpCache>();
 
 
 
@@ -185,7 +185,7 @@ namespace ThunderED.Modules
                 else if (amount == 0)
                 {
                     var operation = result.Data[0];
-                    await SendMessage(operation, context.Message.Channel,$"FleetUp Op <http://fleet-up.com/Operation#{operation.OperationId}>)", false);
+                    await SendMessage(operation, context.Message.Channel, $"FleetUp Op <https://www.taifl.org/operations#{operation.OperationId}>)", false);
                 }
                 else
                 {
@@ -193,7 +193,7 @@ namespace ThunderED.Modules
                     foreach (var operation in result.Data)
                     {
                         if (count >= amount) continue;
-                        await SendMessage(operation, context.Message.Channel, $"FleetUp Op <http://fleet-up.com/Operation#{operation.OperationId}>)", false);
+                        await SendMessage(operation, context.Message.Channel, $"FleetUp Op <https://www.taifl.org/operations#{operation.OperationId}>)", false);
                         count++;
                     }
                 }
