@@ -1322,7 +1322,7 @@ namespace ThunderED.Classes
                 allowedmoonsin.Add(622115471650455592);
                 allowedmoonsin.Add(612150914131689483);
                 allowedmoonsin.Add(612151221347942409);
-
+                allowedmoonsin.Add(620854409798221837);
 
                 ulong curchannel = Context.Channel.Id;
 
