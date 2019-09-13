@@ -1317,7 +1317,27 @@ namespace ThunderED.Classes
         {
             try
             {
-                await MoonsModule.Moons(Context);
+
+                List<ulong> allowedmoonsin = new List<ulong>();
+                allowedmoonsin.Add(622115471650455592);
+                allowedmoonsin.Add(612150914131689483);
+                allowedmoonsin.Add(612151221347942409);
+
+
+                ulong curchannel = Context.Channel.Id;
+
+                if (allowedmoonsin.Contains(curchannel))
+                {
+                    await MoonsModule.Moons(Context);
+                } else
+                {
+                    var channel = Context.Channel;
+                    string idk = @"¯\_(ツ)_/¯";
+                    //await APIHelper.DiscordAPI.ReplyMessageAsync(Context, idk + ":( Error! Please try command later... :(", true);
+                    await APIHelper.DiscordAPI.SendMessageAsync(channel, $"{Context.User.Mention}, " + idk + "   !moons only available in #corporate-chat and #mining-command");
+                }
+
+                
                 //await APIHelper.DiscordAPI.ReplyMessageAsync(Context, ":champagne: Command Coming Soon!! BUT did you know your in channel " + Context.Channel.Id + "???", true);
             }
             catch (Exception ex)
