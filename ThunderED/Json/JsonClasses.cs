@@ -227,6 +227,17 @@ namespace ThunderED.Json
             public int systems_controlled;
         }
 
+        internal class Calendar
+        {
+
+            public string event_date;
+            public long eventID;
+            public string event_response;
+            public bool importance;
+            public string title;
+
+        }
+
         public class FWStatsKills
         {
             public int last_week;

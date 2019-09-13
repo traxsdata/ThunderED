@@ -379,6 +379,12 @@ namespace ThunderED.API
                 $"{SettingsManager.Settings.Config.ESIAddress}latest/characters/{id}/wallet/transactions/?datasource=tranquility&language={_language}", reason, authHeader);
         }
 
+        internal async Task<ESIQueryResult<List<JsonClasses.Calendar>>> GetCalendar(string reason, object userId, string token, string etag)
+        {
+            var authHeader = $"Bearer {token}";
+            return await APIHelper.ESIRequestWrapper<List<JsonClasses.Calendar>>($"{SettingsManager.Settings.Config.ESIAddress}latest/characters/{userId}/calendar/?datasource=tranquility&language={_language}", reason, authHeader, etag);
+        }
+
         public async Task<List<JsonClasses.WalletJournalEntry>> GetCharacterJournalTransactions(string reason, object id, string token)
         {
             var authHeader = $"Bearer {token}";

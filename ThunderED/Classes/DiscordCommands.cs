@@ -1312,6 +1312,21 @@ namespace ThunderED.Classes
             }
         }
 
+        [Command("moons", RunMode = RunMode.Async), Summary("List Moons")]
+        public async Task Moons()
+        {
+            try
+            {
+                await MoonsModule.Moons(Context);
+                //await APIHelper.DiscordAPI.ReplyMessageAsync(Context, ":champagne: Command Coming Soon!! BUT did you know your in channel " + Context.Channel.Id + "???", true);
+            }
+            catch (Exception ex)
+            {
+                await LogHelper.LogEx("moons", ex);
+                await APIHelper.DiscordAPI.ReplyMessageAsync(Context, ":( Error! Please try command later... :(", true);
+            }
+        }
+
         #region Internal
 
         private async Task<bool> IsExecByAdmin()
