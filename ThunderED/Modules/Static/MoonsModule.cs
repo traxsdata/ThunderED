@@ -120,8 +120,8 @@ namespace ThunderED.Modules.Static
                     sb.AppendLine(o);
 
 
-                await APIHelper.DiscordAPI.SendMessageAsync(channel, $"{context.User.Mention},{Environment.NewLine}{Environment.NewLine}" +
-                               sb.ToString()).ConfigureAwait(false);
+                await APIHelper.DiscordAPI.SendMessageAsync(channel, $"{context.User.Mention},{Environment.NewLine}{Environment.NewLine}```" +
+                               sb.ToString() + "```").ConfigureAwait(false);
 
 
             }
