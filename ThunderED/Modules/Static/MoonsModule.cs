@@ -95,11 +95,17 @@ namespace ThunderED.Modules.Static
                             if (r.title.StartsWith("Moon extraction for "))
                             {
                                 string key = r.event_date + "..." + r.title;
-                                string value = r.event_date + " at " + r.title + "...";
+                                
 
                                 if (!moons.ContainsKey(key))
                                 {
                                     //sb.AppendLine(value);
+                                    
+
+                                    string dteve = r.event_date.Replace("T", " ").Replace("Z", " ");
+                                    DateTime dt = DateTime.Parse(dteve);
+
+                                    string value = dt.ToString() + " --- " + r.title + "...";
                                     moons.Add(key, value);
                                     output.Add(value);
                                 }
