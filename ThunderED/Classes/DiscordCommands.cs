@@ -1323,6 +1323,7 @@ namespace ThunderED.Classes
                 allowedmoonsin.Add(612150914131689483);
                 allowedmoonsin.Add(612151221347942409);
                 allowedmoonsin.Add(620854409798221837);
+                allowedmoonsin.Add(611963363769188372);
 
                 ulong curchannel = Context.Channel.Id;
 
@@ -1334,7 +1335,7 @@ namespace ThunderED.Classes
                     var channel = Context.Channel;
                     string idk = @"¯\_(ツ)_/¯";
                     //await APIHelper.DiscordAPI.ReplyMessageAsync(Context, idk + ":( Error! Please try command later... :(", true);
-                    await APIHelper.DiscordAPI.SendMessageAsync(channel, $"{Context.User.Mention}, " + idk + "   !moons only available in #corporate-chat and #mining-command");
+                    await APIHelper.DiscordAPI.SendMessageAsync(channel, $"{Context.User.Mention}, " + idk + "   !moons only available in #corporate-chat, #mining-command, and #mining");
                 }
 
                 
