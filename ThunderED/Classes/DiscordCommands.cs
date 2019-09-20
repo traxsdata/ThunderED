@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using ThunderED.Helpers;
 using ThunderED.Modules;
@@ -1410,6 +1411,36 @@ namespace ThunderED.Classes
 
             await APIHelper.DiscordAPI.ReplyMessageAsync(Context, VodkaMessages[IRC.Helpers.Helpers.Random(0, VodkaMessages.Count-1)], true);
         }
+
         #endregion
+
+        private static readonly List<string> DrThunderStuff = new List<string>
+        {
+            "https://www.taifl.org/thunder/ae91421e-d363-4169-979d-99a759086774.png",
+            "https://www.taifl.org/thunder/16280b96-3cea-4815-9e80-556fb6751c0c.jpg",
+            "https://www.taifl.org/thunder/d69f69c4-8534-47a9-8d40-d7f945818392.jpg",
+            "https://www.taifl.org/thunder/1e2cf3a9-222e-458a-9292-01687e4eae92.jpg",
+            "https://www.taifl.org/thunder/912eb632-a3a0-4f34-b86a-68b4ed7c230a.jpg",
+            "https://www.taifl.org/thunder/9942356a-9026-4d0b-b3a7-d20d998afc26.gif",
+            "https://www.taifl.org/thunder/c05bcc60-d5a9-4a35-84bb-ca89f3bd4811.jpeg"
+        };
+
+        [Command("drthunder", RunMode = RunMode.Async), Summary("")]
+        public async Task ThunderCommand()
+        {
+            if (IsForbidden()) return;            
+
+            string imgurl = DrThunderStuff[IRC.Helpers.Helpers.Random(0, DrThunderStuff.Count - 1)];            
+
+            var builder = new EmbedBuilder();
+            //builder.Title = "DR THUNDER~!!";
+            builder.ImageUrl = imgurl;
+
+            var emb = builder.Build();
+
+            //await APIHelper.DiscordAPI.ReplyMessageAsync(Context, , true);
+            await APIHelper.DiscordAPI.ReplyMessageAsync(Context, " ", emb); 
+        }
+
     }
 }
