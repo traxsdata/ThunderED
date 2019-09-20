@@ -1,0 +1,8 @@
+cd ~
+rm -rf thunder/
+sudo docker stop $(sudo docker ps -a -q)
+sudo docker system prune
+git clone https://github.com/traxsdata/ThunderED
+cd ThunderED
+sudo docker build -t thundered .
+sudo docker run -d -p 8001:8001 -v /opt/thunder:/app/ThunderED/Data thundered:latest
