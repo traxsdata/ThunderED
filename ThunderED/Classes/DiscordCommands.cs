@@ -1486,5 +1486,13 @@ namespace ThunderED.Classes
             await APIHelper.DiscordAPI.ReplyMessageAsync(Context, eball[IRC.Helpers.Helpers.Random(0, eball.Count-1)], true);
         }
 
+                        [Command("8ball", RunMode = RunMode.Async), Summary("")]
+        public async Task BallCommand()
+        {
+            if(IsForbidden()) return;
+
+            await APIHelper.DiscordAPI.ReplyMessageAsync(Context, eball[IRC.Helpers.Helpers.Random(0, eball.Count-1)], true);
+        }
+
     }
 }
