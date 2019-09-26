@@ -1442,5 +1442,49 @@ namespace ThunderED.Classes
             await APIHelper.DiscordAPI.ReplyMessageAsync(Context, " ", emb); 
         }
 
+
+
+        private static readonly List<string> eball = new List<string>
+            {
+            "It seems certain",
+            "It is decidedly so",
+            "Without a doubt dude",
+            "Yes, definitely",
+            "You may rely on it",
+            "As I see it, yes",
+            "Most likely, man",
+            "Outlook is good",
+            "Signs point to yes, I guess",
+            "Reply hazy try again when I actually care",
+            "Ask again later, dude",
+            "Ouch, better not tell you now",
+            "Cannot predict now, I'm sleepy",
+            "Actually think about what you are asking me and try again",
+            "Don't count on it, weirdo",
+            "No...just no",
+            "My sources say no",
+            "Very doubtful man",
+            "!!8",
+            "Signs point to yes",
+            "Without a doubt",
+            "You may rely on it",
+            "Do not count on it",
+            "Looking good",
+            "Cannot predict now",
+            "It is decidedly so",
+            "Outlook not so good",
+            "I’ve just found 1,301,301 ways that won’t work",
+            "Please. Leave. Me. Alone."
+
+            };
+
+                [Command("8ball", RunMode = RunMode.Async), Summary("")]
+        public async Task VodkaCommand()
+        {
+            if(IsForbidden()) return;
+
+            await APIHelper.DiscordAPI.ReplyMessageAsync(Context, eball[IRC.Helpers.Helpers.Random(0, eball.Count-1)], true);
+        }
+
     }
 }
