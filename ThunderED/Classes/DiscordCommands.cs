@@ -1479,7 +1479,7 @@ namespace ThunderED.Classes
             };
 
                 [Command("8ball", RunMode = RunMode.Async), Summary("")]
-        public async Task BallCommand()
+        public async Task BallCommand([Remainder] string x)
         {
             if(IsForbidden()) return;
 
